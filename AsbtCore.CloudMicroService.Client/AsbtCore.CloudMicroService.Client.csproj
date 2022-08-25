@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AsbtCore.MajordomoCommons\AsbtCore.MajordomoCommons.csproj" />
+    <ProjectReference Include="..\AsbtCore.MajordomoProtocol\AsbtCore.MajordomoProtocol.csproj" />
+    <ProjectReference Include="..\AsbtCore.Messages.Serialize\AsbtCore.Messages.Serialize.csproj" />
+  </ItemGroup>
+
+</Project>

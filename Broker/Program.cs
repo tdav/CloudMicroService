@@ -7,7 +7,7 @@ namespace Broker
         private static void Main(string[] args)
         {
             var cts = new CancellationTokenSource();
-            
+
             try
             {
                 RunBroker(cts).Wait();
@@ -45,10 +45,10 @@ namespace Broker
         private static async Task RunBroker(CancellationTokenSource cts)
         {
             using var broker = new MDPBroker("tcp://*:5555");
-            broker.LogInfoReady += (s, e) => Console.WriteLine(e.Info);
-            broker.DebugInfoReady += (s, e) => Console.WriteLine(e.Info);
-            
+            //  broker.LogInfoReady += (s, e) => Console.WriteLine(e.Info);
+            //  broker.DebugInfoReady += (s, e) => Console.WriteLine(e.Info);
+
             await broker.Run(cts.Token);
         }
-    }                                                
+    }
 }

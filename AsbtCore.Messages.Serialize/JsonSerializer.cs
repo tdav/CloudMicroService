@@ -2,13 +2,13 @@ using System.Runtime.CompilerServices;
 
 namespace AsbtCore.Messages.Serialize
 {
-    public static class SerializeExtentions
+    public class JsonSerializer : ISerializer
     {
-        public static string ToJson(this object value, [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0)
+        public byte[] Serialize<T>(T message, [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0)
         {
             try
             {
-                return SpanJson.JsonSerializer.Generic.Utf16.Serialize(value);
+                return SpanJson.JsonSerializer.Generic.Utf8.Serialize(message);
             }
             catch (Exception ee)
             {
@@ -17,11 +17,11 @@ namespace AsbtCore.Messages.Serialize
             }
         }
 
-        public static T FromJson<T>(string value, [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0)
+        public T Deserialize<T>(byte[] bytes, [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0)
         {
             try
             {
-                return SpanJson.JsonSerializer.Generic.Utf16.Deserialize<T>(value);
+                return SpanJson.JsonSerializer.Generic.Utf8.Deserialize<T>(bytes);
             }
             catch (Exception ee)
             {

@@ -13,6 +13,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\AsbtCore.CloudMicroService.Server\AsbtCore.CloudMicroService.Worker.csproj" />
 		<ProjectReference Include="..\AsbtCore.MajordomoCommons\AsbtCore.MajordomoCommons.csproj" />
 		<ProjectReference Include="..\AsbtCore.MajordomoProtocol\AsbtCore.MajordomoProtocol.csproj" />
 	</ItemGroup>
