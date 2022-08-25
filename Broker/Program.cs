@@ -4,20 +4,10 @@ namespace Broker
 {
     internal static class Program
     {
-        private static bool s_verbose, s_debug;
-
         private static void Main(string[] args)
         {
-            s_verbose = false;
-            s_debug = false;
-
-
             var cts = new CancellationTokenSource();
-
-            Console.CancelKeyPress += (s, e) => { e.Cancel = true; cts.Cancel(); };
-
-            Console.WriteLine("Starting Broker ...");
-
+            
             try
             {
                 RunBroker(cts).Wait();
@@ -54,11 +44,11 @@ namespace Broker
 
         private static async Task RunBroker(CancellationTokenSource cts)
         {
-            using var broker = new MDPBroker("tcp://192.168.0.234:5555");
+            using var broker = new MDPBroker("tcp://*:5555");
             broker.LogInfoReady += (s, e) => Console.WriteLine(e.Info);
             broker.DebugInfoReady += (s, e) => Console.WriteLine(e.Info);
-
+            
             await broker.Run(cts.Token);
         }
-    }
+    }                                                
 }

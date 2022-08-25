@@ -201,8 +201,10 @@ namespace AsbtCore.MajordomoProtocol
             using (var poller = new NetMQPoller())
             {
                 Socket.ReceiveReady += ProcessReceivedMessage;
+
                 // get timer for scheduling heartbeat
                 var timer = new NetMQTimer(HeartbeatInterval);
+
                 // send every 'HeartbeatInterval' a heartbeat to all not expired workers
                 timer.Elapsed += (s, e) => SendHeartbeat();
 
@@ -300,7 +302,7 @@ namespace AsbtCore.MajordomoProtocol
             var headerFrame = msg.Pop();               // [service or command][data]
             var header = headerFrame.ConvertToString();
 
-            if (header == MDPConstants.MDP_CLIENT_HEADER)
+            if ( header == MDPConstants.MDP_CLIENT_HEADER)
                 ProcessClientMessage(senderFrame, msg);
             else
                 if (header == MDPConstants.MDP_WORKER_HEADER)
@@ -424,6 +426,7 @@ namespace AsbtCore.MajordomoProtocol
 
                     returnCode = svc.DoWorkersExist() ? MmiCode.Ok : MmiCode.Pending;
                 }
+
                 // set the return code to be the last frame in the message
                 var rc = new NetMQFrame(returnCode.ToString());// [return code]
 

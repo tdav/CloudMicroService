@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFrameworks>net472;netcoreapp3.1</TargetFrameworks>
+
+        <DefineConstants>LIGHT_EXPRESSION</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Remove="*.ncrunchproject"/>
+        <Compile Include="..\FastExpressionCompiler.IssueTests\**\*.cs" Exclude="..\FastExpressionCompiler.IssueTests\obj\**\*.*"/>
+        <Compile Include="..\FastExpressionCompiler.UnitTests\TestTools.cs" />
+
+        <Compile Remove="..\FastExpressionCompiler.IssueTests\ObjectMethodExecutor\**"/>
+        <Compile Remove="..\FastExpressionCompiler.IssueTests\Issue67_Equality_comparison_with_nullables_throws_at_delegate_invoke.cs"/>
+        <Compile Remove="..\FastExpressionCompiler.IssueTests\Issue72_Try_CompileFast_for_MS_Extensions_ObjectMethodExecutor.cs"/>
+        <Compile Remove="..\FastExpressionCompiler.IssueTests\NServiceBus_PipelineExecutionExtensions.cs"/>
+        <Compile Remove="..\FastExpressionCompiler.IssueTests\NServiceBus_PipelineExecutionExtensions.SUT.cs"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\FastExpressionCompiler.LightExpression\FastExpressionCompiler.LightExpression.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Reference Include="ILDebugging.Decoder">
+            <HintPath>..\libs\ILDebugging.Decoder.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+
+</Project>

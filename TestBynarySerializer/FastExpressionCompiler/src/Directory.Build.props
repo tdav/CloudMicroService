@@ -1,0 +1,52 @@
+<Project>
+    <Import Project="..\Directory.Build.props"/>
+
+    <PropertyGroup Label="Packaging">
+        <PackageProjectUrl>https://github.com/dadhi/FastExpressionCompiler</PackageProjectUrl>
+
+        <PackageLicense>https://github.com/dadhi/FastExpressionCompiler/blob/master/LICENSE</PackageLicense>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+
+        <RepositoryUrl>https://github.com/dadhi/FastExpressionCompiler</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+
+        <PackageIcon>logo.png</PackageIcon>
+        <PackageIconUrl>https://github.com/dadhi/FastExpressionCompiler/blob/master/logo.png</PackageIconUrl>
+
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    </PropertyGroup>
+
+    <PropertyGroup Label="Signing all packages, oh boy">
+        <SignAssembly>true</SignAssembly>
+        <AssemblyOriginatorKeyFile>..\..\FastExpressionCompiler.snk</AssemblyOriginatorKeyFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\..\LICENSE" Pack="true" PackagePath="LICENSE" Visible="false"/>
+        <None Include="..\..\logo.png" Pack="true" PackagePath="logo.png" Visible="false"/>
+        <None Include="..\..\FastExpressionCompiler.snk" Pack="true" PackagePath="FastExpressionCompiler.snk" Visible="false"/>
+    </ItemGroup>
+
+    <PropertyGroup>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        
+        <PackageOutputPath>..\..\.dist</PackageOutputPath>
+
+        <DebugType>embedded</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+        <IncludeSymbols>false</IncludeSymbols>
+    </PropertyGroup>
+
+    <ItemGroup Condition=" '$(Configuration)' == 'Release' ">
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
+    </ItemGroup>
+
+</Project>

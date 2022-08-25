@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+
+        <VersionPrefix>4.2.1</VersionPrefix>
+        <VersionSuffix></VersionSuffix>
+
+        <Product>FastExpressionCompiler.LightExpression</Product>
+
+        <PackageId>$(Product)</PackageId>
+        <Title>$(Product)</Title>
+        <Description>FastExpressionCompiler for LightExpression is 10-40x times faster than Expression.Compile()</Description>
+        <PackageTags>Performance;Expression;ExpressionTree;Compile;DynamicMethod;IL;ILEmit;DryIoc;ExpressionToCodeLib</PackageTags>
+
+        <AssemblyName>$(Product)</AssemblyName>
+        <AssemblyTitle>$(Product) $(TargetFramework)</AssemblyTitle>
+        <AssemblyVersion>$(VersionPrefix)</AssemblyVersion>
+
+        <DefineConstants>LIGHT_EXPRESSION</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="..\FastExpressionCompiler\FastExpressionCompiler.cs" />
+    </ItemGroup>
+</Project>

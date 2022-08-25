@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFrameworks>net472;netcoreapp3.1</TargetFrameworks>
+
+        <DefineConstants>LIGHT_EXPRESSION</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Remove="*.ncrunchproject" />
+        <Compile Include="..\FastExpressionCompiler.UnitTests\**\*.cs" Exclude="..\FastExpressionCompiler.UnitTests\obj\**\*.*" />
+        <Compile Remove="..\FastExpressionCompiler.UnitTests\ConstantAndConversionTests.cs" />
+        <Compile Remove="..\FastExpressionCompiler.UnitTests\HoistedLambdaExprTests.cs" />
+        <Compile Remove="..\FastExpressionCompiler.UnitTests\ValueTypeTests.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\FastExpressionCompiler\FastExpressionCompiler.csproj" />
+        <ProjectReference Include="..\..\src\FastExpressionCompiler.LightExpression\FastExpressionCompiler.LightExpression.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Reference Include="ILDebugging.Decoder">
+            <HintPath>..\libs\ILDebugging.Decoder.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+
+</Project>
